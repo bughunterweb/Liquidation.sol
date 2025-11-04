@@ -100,8 +100,17 @@ so this equation means is that `new collateral position` should be equal to 1.25
   `liquidatorWillPay =  currentLoan  - (currentColleteral*ltv) /  1 - (earnPercent * ltv)`  
    
 
+# Correct use of this formula 
+
+Make sure that current loan price / collateral price  is above ltv  or else it will wrong data.  
+
+Make sure that what `liquidatorWillPay` return multiply it with `earnPercent` and make sure it is less than `currentCollateralPrice`  --> or else liquidator will get more than user has collateral.  
 
 
+why the second statement let see with an example :-->
 
+current collateral is  125 and earnPercent is 1.04 (104%)  so 125 / 1.04 = 120.192307  ,if liquidator provides more than 120.192307 then 121 * 1.04 = 125 .84 which exceds the user collateral.  
+
+so `liquidatorWillPay * earnPercent <= currentCollateral`
 
 
