@@ -1,3 +1,5 @@
+// warning :-->  this test will not catch the bug where  colleteral and loan amount is close like  123 loan and 125 collateral since these will be bypassed by echidna
+// that's why I have put the require statement which will catch this bug in real contracts.
 
 pragma solidity ^0.8.0;
 
